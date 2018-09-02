@@ -1,5 +1,5 @@
 {
-  "name": "@studiohyperdrive/lb-task-helper",
+  "name": "@studiohyperdrive/lb-task-checker",
   "version": "1.0.0",
   "description": "Helper for running tasks loadbalanced",
   "main": "index.js",
