@@ -22,41 +22,23 @@ Helper for running tasks loadbalanced.
 
 ## Setup ##
 
-### System Dependencies ###
+### Install ###
 
-* E.g. [MongoDB 3.4.4](https://www.mongodb.com/)
-* E.g. [Node 6.10.2](https://nodejs.org/en/)
+`npm install git+https://github.com/JvJefke/lb-task-checker.git`
 
-### Init ###
+### Usuage ###
 
-* `nvm use` [Check out NVM AutoSwitch](https://github.com/lalitkapoor/nvm-auto-switch)
-* `npm install` or `npm i`
+```js
+const LbTaskChecker = require("@studiohyperdrive/lb-task-checker");
 
+lbTaskCheckerInstance.registerTask({
+    key: "SCHEDULE_PUBLISHING",
+    instance: process.pid
+});
 
-## Codebase ##
-
-### Structure ###
-* **server/**: Contains the NodeJS server that serves the app and contains business logic.
-* **client/**: Contains the Angular website logic.
-* **config/**: Contains project-wide configuration properties.
-
-### External Services ###
-
-This project implements several external services:
-
-* **External Service 1**: Used for fetching news articles.
-* **External Service 2**: User for indexing content in Solr.
-
-
-### NPM Scripts ###
-
-| Command       | Description                                 |
-| ------------- |-------------------------------------------- |
-| start         | Start the project.                          |
-| docs          | Show jsDocs                                 |
-| projectsheet  | Open the projectsheet on Google Drive       |
-| test          | Run tests                                   |
-
+lbTaskCheckerInstance.reserve("SCHEDULE_PUBLISHING", new Date(new Date().getTime() + 10000), process.pid)
+    .then((runTask) => runTask ? [run task here] : null);
+```
 
 All commands are executable by running `npm run [COMMAND-NAME]`.
 
@@ -70,34 +52,10 @@ All commands are executable by running `npm run [COMMAND-NAME]`.
 We follow these naming conventions:
 
 * **master**: Production-ready code.
-* **develop**: Development code.
 * **release/***: Snapshot of a release.
 * **feature/***: For developing new features.
 * **bugfix/***: For bugs that are logged during testing.
 * **hotfix/***: Only for hotfixing critical bugs from the `master`-branch.
-
-
-
-## Environments ##
-
-### Development ###
-
-The development environment receives automatic builds when code is contributed to the `development`-branch. This environment is expected to break from time to time and thus should be used for **internal testing only**!
-
-**URL**: [https://bitbucket.org/district01/boilerplate/overview](https://bitbucket.org/district01/boilerplate/overview)
-
-### Staging ###
-
-The staging environment receives automatic builds when code is contributed to the `master`-branch. This environment is expected to remain stable and should be used for **client validation testing**.
-
-**URL**: [https://bitbucket.org/district01/boilerplate/overview](https://bitbucket.org/district01/boilerplate/overview)
-
-### Production ###
-
-The production environment is built manually from the `master`-branch. This environment has to be **stable at all times**. No unvalidated code can be deployed on this environment.
-
-**URL**: [https://bitbucket.org/district01/boilerplate/overview](https://bitbucket.org/district01/boilerplate/overview)
-
 
 
 ## Project Context ##
