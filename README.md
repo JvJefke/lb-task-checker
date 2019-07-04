@@ -5,15 +5,11 @@ Helper for running tasks loadbalanced.
 # Table of contents #
 
 * [Setup](#setup)
-    * [System Dependencies](#system-dependencies)
-    * [Init](#init)
-* [Codebase](#codebase)
-    * [Structure](#structure)
-    * [NPM Scripts](#npm-scripts)
+    * [Install](#install)
+    * [usage](#usage)
 * [Code Contribution](#code-contribution)
     * [Guidelines](#guidelines)
     * [Branches](#branches)
-* [Environments](#environments)
 * [Project Context](#project-context)
     * [Details](#details)
     * [Team](#team)
@@ -26,7 +22,7 @@ Helper for running tasks loadbalanced.
 
 `npm install git+https://github.com/JvJefke/lb-task-checker.git`
 
-### Usuage ###
+### Usage ###
 
 ```js
 const LbTaskChecker = require("@studiohyperdrive/lb-task-checker");
@@ -39,8 +35,6 @@ lbTaskCheckerInstance.registerTask({
 lbTaskCheckerInstance.reserve("SCHEDULE_PUBLISHING", new Date(new Date().getTime() + 10000), process.pid)
     .then((runTask) => runTask ? [run task here] : null);
 ```
-
-All commands are executable by running `npm run [COMMAND-NAME]`.
 
 ## Code Contribution ##
 
